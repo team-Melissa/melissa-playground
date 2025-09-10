@@ -1,5 +1,5 @@
-import { QueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { QueryClient } from '@tanstack/react-query';
+import { useState } from 'react';
 
 const initQueryClient = () => {
   return new QueryClient({

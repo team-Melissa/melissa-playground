@@ -1,1 +1,1 @@
-export * from "@/modules/react-query/provider/ReactQueryProvider";
+export * from '@/modules/react-query/provider/ReactQueryProvider';

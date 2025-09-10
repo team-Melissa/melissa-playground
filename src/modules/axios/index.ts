@@ -1,1 +1,1 @@
-export * from "@/modules/axios/instances/client";
+export * from '@/modules/axios/instances/client';

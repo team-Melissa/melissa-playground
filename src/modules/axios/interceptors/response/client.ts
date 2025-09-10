@@ -1,9 +1,9 @@
-import { getNewToken } from "@/modules/axios/api/getNewToken";
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "@/modules/axios/constants";
-import { type PendingApiCallback } from "@/modules/axios/types";
-import axios, { type AxiosError } from "axios";
-import { deleteCookie, getCookie, setCookie } from "cookies-next";
-import Router from "next/router";
+import { getNewToken } from '@/modules/axios/api/getNewToken';
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/modules/axios/constants';
+import { type PendingApiCallback } from '@/modules/axios/types';
+import axios, { type AxiosError } from 'axios';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
+import Router from 'next/router';
 
 let isRefreshing = false;
 
