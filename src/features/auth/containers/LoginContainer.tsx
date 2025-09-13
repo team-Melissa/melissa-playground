@@ -15,6 +15,7 @@ export default function LoginContainer() {
   return (
     <div>
       <Button onClick={() => goToLogin('kakao')}>카카오 로그인</Button>
+      <Button onClick={() => goToLogin('google')}>구글 로그인</Button>
     </div>
   );
 }

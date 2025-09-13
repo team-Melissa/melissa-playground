@@ -10,6 +10,14 @@ export type KakaoTokenDTO = {
   scope?: string;
 };
 
+export type GoogleTokenDTO = {
+  access_token: string;
+  expires_in: number;
+  scope: string;
+  token_type: string;
+  id_token: string;
+};
+
 export type LoginDTO = {
   isSuccess: boolean;
   code: string;
