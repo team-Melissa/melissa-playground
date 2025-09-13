@@ -1,19 +1,20 @@
 import { Button } from '@/components/ui/button';
+import { LOGIN_URI_MAP } from '@/features/auth/constants';
+import { type OAuthProvider } from '@/features/auth/types';
 import { useRouter } from 'next/router';
-
-const KAKAO_LOGIN_URI = '/api/login/kakao?nextUri=/home';
-const GOOGLE_LOGIN_URI = '/api/login/google?nextUri=/home';
 
 export default function LoginContainer() {
   const router = useRouter();
+  const nextUri = (router.query.nextUri ?? '/home') as string;
 
-  const goToLogin = (url: string) => {
-    return router.push(url);
+  const goToLogin = (oauthProvider: OAuthProvider) => {
+    const destination = `${LOGIN_URI_MAP[oauthProvider]}?nextUri=${nextUri}`;
+    return router.push(destination);
   };
 
   return (
     <div>
-      <Button onClick={() => goToLogin(KAKAO_LOGIN_URI)}>카카오 로그인</Button>
+      <Button onClick={() => goToLogin('kakao')}>카카오 로그인</Button>
     </div>
   );
 }

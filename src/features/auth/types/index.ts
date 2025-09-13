@@ -1,3 +1,5 @@
+export type OAuthProvider = 'kakao' | 'google';
+
 export type KakaoTokenDTO = {
   token_type: string;
   access_token: string;
