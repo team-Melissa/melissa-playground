@@ -17,3 +17,42 @@ export type AiProfilesDto = {
   message: string;
   result: AiProfile[];
 };
+
+export type Chat = {
+  chatId: number;
+  role: string;
+  content: string;
+  createAt: string;
+  aiProfileName: string;
+  aiProfileImageS3: string;
+};
+
+export type ChattingListDto = {
+  isSuccess: boolean;
+  code: string;
+  message: string;
+  result: {
+    aiProfileName: string;
+    aiProfileImageS3: string;
+    chats: Chat[];
+  };
+};
+
+export type ChangeAiProfileDto = {
+  isSuccess: boolean;
+  code: string;
+  message: string;
+  result: string;
+};
+
+export type MakeChatRoomDto = {
+  isSuccess: boolean;
+  code: string;
+  message: string;
+  result: {
+    threadId: number;
+    year: number;
+    month: number;
+    day: number;
+  };
+};
