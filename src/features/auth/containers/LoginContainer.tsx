@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { LOGIN_URI_MAP } from '@/features/auth/constants';
+import { CLIENT_LOGIN_URI_MAP } from '@/features/auth/constants';
 import { type OAuthProvider } from '@/features/auth/types';
 import { useRouter } from 'next/router';
 
@@ -8,7 +8,7 @@ export default function LoginContainer() {
   const nextUri = (router.query.nextUri ?? '/home') as string;
 
   const goToLogin = (oauthProvider: OAuthProvider) => {
-    const destination = `${LOGIN_URI_MAP[oauthProvider]}?nextUri=${nextUri}`;
+    const destination = `${CLIENT_LOGIN_URI_MAP[oauthProvider]}?nextUri=${nextUri}`;
     return router.push(destination);
   };
 

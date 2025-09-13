@@ -8,7 +8,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     'https://kauth.kakao.com/oauth/authorize?' +
       `client_id=${KAKAO_REST_API_KEY}&` +
       `redirect_uri=${KAKAO_REDIRECT_URI}&` +
-      `state=${nextUri}&` +
-      'response_type=code'
+      'response_type=code&' +
+      `state=${nextUri}`
   );
 }

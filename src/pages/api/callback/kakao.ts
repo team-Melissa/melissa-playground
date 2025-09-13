@@ -10,10 +10,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!code) throw new Error('카카오 code 발급 실패');
 
   const kakaoAccessToken = await getKakaoToken(code);
-  const result = await kakaoLogin(kakaoAccessToken);
+  const { accessToken, refreshToken } = await kakaoLogin(kakaoAccessToken);
+
   res.setHeader('set-cookie', [
-    serialize(ACCESS_TOKEN_KEY, result.accessToken, { path: '/', secure: true }),
-    serialize(REFRESH_TOKEN_KEY, result.refreshToken, { path: '/', secure: true }),
+    serialize(ACCESS_TOKEN_KEY, accessToken, { path: '/', secure: true }),
+    serialize(REFRESH_TOKEN_KEY, refreshToken, { path: '/', secure: true }),
   ]);
+
   res.redirect(302, nextUri);
 }
