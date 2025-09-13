@@ -1,4 +1,4 @@
-import { SERVER_URL } from '@/modules/axios/constants';
+import { SERVER_URL } from '@/constants/env';
 import { type RefreshDto } from '@/modules/axios/types';
 import axios from 'axios';
 
