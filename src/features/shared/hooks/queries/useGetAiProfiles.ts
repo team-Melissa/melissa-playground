@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const getAiProfiles = async () => {
   const { data } = await APIClient.get<AiProfilesDto>('/api/v1/ai-profiles');
-  return data;
+  return data.result;
 };
 
 export const AI_PROFILES_QUERY_KEY = 'AI_PROFILES_QUERY_KEY';

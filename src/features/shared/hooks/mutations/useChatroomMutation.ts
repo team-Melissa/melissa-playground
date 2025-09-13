@@ -10,7 +10,7 @@ const postChatroom = async (aiProfileId: number) => {
     params: { aiProfileId, year, month, day },
   });
 
-  return data;
+  return data.result;
 };
 
 export const useChatroomMutation = () => {
