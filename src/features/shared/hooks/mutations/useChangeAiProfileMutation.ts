@@ -3,6 +3,7 @@ import { type ChangeAiProfileDto } from '@/features/shared/types/dto';
 import { getDay } from '@/features/shared/utils/day';
 import { APIClient } from '@/modules/axios';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 const patchAiProfile = async (aiProfileId: number) => {
   const { year, month, day } = getDay();
@@ -19,5 +20,6 @@ export const useChangeAiProfileMutation = () => {
   return useMutation({
     mutationFn: patchAiProfile,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: [AI_PROFILES_QUERY_KEY] }),
+    onError: () => toast('useChangeAiProfileMutation 실패'),
   });
 };

@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ReactQueryProvider>
       <Component {...pageProps} />
-      <Toaster />
+      <Toaster position="top-center" />
     </ReactQueryProvider>
   );
 }

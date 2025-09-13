@@ -2,6 +2,7 @@ import type { ChatSummaryDto } from '@/features/shared/types/dto';
 import { getDay } from '@/features/shared/utils/day';
 import { APIClient } from '@/modules/axios';
 import { useMutation } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 const postChatSummary = async () => {
   const { year, month, day } = getDay();
@@ -15,5 +16,7 @@ const postChatSummary = async () => {
 export const useChatSummaryMutation = () => {
   return useMutation({
     mutationFn: postChatSummary,
+    onSuccess: () => toast('요약 성공'),
+    onError: () => toast('useChatSummaryMutation 실패'),
   });
 };
