@@ -53,6 +53,7 @@ const eslintConfig = [
       'no-var': 'error',
       'object-shorthand': 'error',
       'prefer-template': 'error',
+      'react/no-unknown-property': ['error', { ignore: ['tw'] }],
     },
   },
 ];
