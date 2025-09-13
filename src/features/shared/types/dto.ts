@@ -56,3 +56,20 @@ export type MakeChatRoomDto = {
     day: number;
   };
 };
+
+export type ChatSummaryDto = {
+  isSuccess: boolean;
+  code: string;
+  message: string;
+  result: {
+    year: number;
+    month: number;
+    day: number;
+    summaryTitle: string;
+    summaryMood: string;
+    summaryContent: string;
+    hashTag1: string;
+    hashTag2: string;
+    imageS3: string;
+  };
+};
