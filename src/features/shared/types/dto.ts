@@ -57,6 +57,17 @@ export type MakeChatRoomDto = {
   };
 };
 
+export type UserMemoryDto = {
+  isSuccess: boolean;
+  code: string;
+  message: string;
+  result: {
+    memoryContent: string;
+    lastUpdatedAt: string;
+    hasMemory: boolean;
+  };
+};
+
 export type ChatSummaryDto = {
   isSuccess: boolean;
   code: string;
