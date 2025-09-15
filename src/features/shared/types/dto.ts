@@ -20,7 +20,7 @@ export type AiProfilesDto = {
 
 export type Chat = {
   chatId: number;
-  role: string;
+  role: Role;
   content: string;
   createAt: string;
   aiProfileName: string;
@@ -71,5 +71,21 @@ export type ChatSummaryDto = {
     hashTag1: string;
     hashTag2: string;
     imageS3: string;
+  };
+};
+
+type Role = 'USER' | 'AI';
+
+export type SendChatDto = {
+  isSuccess: boolean;
+  code: string;
+  message: string;
+  result: {
+    chatId: number;
+    role: Role;
+    content: string;
+    createdAt: string;
+    aiProfileName: string;
+    aiProfileImageS3: string;
   };
 };
