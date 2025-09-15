@@ -4,6 +4,7 @@ import { type ChangeAiProfileDto } from '@/features/shared/types/dto';
 import { getDay } from '@/features/shared/utils/day';
 import { APIClient } from '@/modules/axios';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { isAxiosError } from 'axios';
 import { toast } from 'sonner';
 
 const patchAiProfile = async (aiProfileId: number) => {
@@ -24,6 +25,10 @@ export const useChangeAiProfileMutation = () => {
       await queryClient.invalidateQueries({ queryKey: [AI_PROFILES_QUERY_KEY] });
       await queryClient.invalidateQueries({ queryKey: [CHATTING_LIST_QUERY_KEY] });
     },
-    onError: () => toast('useChangeAiProfileMutation 실패'),
+    onError: (error) => {
+      if (isAxiosError(error)) {
+        toast(`useChangeAiProfileMutation 실패: ${error.response?.data.code}`);
+      }
+    },
   });
 };
