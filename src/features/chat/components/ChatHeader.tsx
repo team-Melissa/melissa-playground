@@ -10,18 +10,19 @@ type Props = {
 
 export default function ChatHeader({ aiProfileImage, aiProfileName }: Props) {
   const router = useRouter();
-  const { mutate: chatSummaryMutate } = useChatSummaryMutation();
+  const { isPending, mutate: chatSummaryMutate } = useChatSummaryMutation();
 
   const goToBack = () => {
     router.back();
   };
 
   const handleSummaryClick = () => {
+    if (isPending) return;
     chatSummaryMutate();
   };
 
   return (
-    <div className="p-4 border-b flex justify-between items-center">
+    <div className="sticky top-0 bg-white/80 p-4 border-b flex justify-between items-center">
       <div className="flex items-center gap-3">
         <ArrowLeft onClick={goToBack} className="cursor-pointer text-black hover:text-gray-500" />
         <Image src={aiProfileImage} alt={aiProfileName} width={40} height={40} className="rounded-full" />

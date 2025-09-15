@@ -10,7 +10,7 @@ export default function ChatList({ chats }: Props) {
     <div className="flex-1">
       <div className="flex-1 overflow-y-auto p-4 space-y-2">
         {chats.map((chat) => (
-          <ChatMessage key={chat.chatId} chat={chat} isUser={chat.role === 'user'} />
+          <ChatMessage key={chat.chatId} chat={chat} isUser={chat.role === 'USER'} />
         ))}
       </div>
     </div>

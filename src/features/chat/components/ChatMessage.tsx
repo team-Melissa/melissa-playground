@@ -15,7 +15,6 @@ export default function ChatMessage({ chat, isUser }: Props) {
           <Image src={chat.aiProfileImageS3} alt={chat.aiProfileName} width={40} height={40} className="rounded-full" />
         </div>
       )}
-
       <div className={cn('flex flex-col', isUser ? 'items-end' : 'items-start')}>
         {!isUser && <p className="text-sm text-gray-600 mb-1">{chat.aiProfileName}</p>}
         <div
