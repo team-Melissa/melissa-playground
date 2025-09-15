@@ -4,30 +4,31 @@ import { useAiProfileId } from '@/features/chat/hooks/useAiProfileId';
 import { useChangeAiProfileMutation } from '@/features/shared/hooks/mutations/useChangeAiProfileMutation';
 import { useChatroomMutation } from '@/features/shared/hooks/mutations/useChatroomMutation';
 import { useGetChattingList } from '@/features/shared/hooks/queries/useGetChattingList';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ChatList from '../components/ChatList';
 
 export default function ChatContainer() {
   const aiProfileId = useAiProfileId();
   const [isReady, setIsReady] = useState<boolean>(false);
+  const initializedRef = useRef<boolean>(false);
+
   const { data: chattingList } = useGetChattingList(isReady);
 
   const { mutateAsync: chatroomMutate } = useChatroomMutation();
   const { mutateAsync: changeAiProfileMutate } = useChangeAiProfileMutation();
 
   useEffect(() => {
+    if (initializedRef.current) return;
+
     (async () => {
       if (aiProfileId) {
+        initializedRef.current = true;
         await chatroomMutate(aiProfileId);
         await changeAiProfileMutate(aiProfileId);
         setIsReady(true);
       }
     })();
-
-    return () => {
-      setIsReady(false);
-    };
-  }, [aiProfileId, changeAiProfileMutate, chatroomMutate]);
+  }, [isReady, aiProfileId, changeAiProfileMutate, chatroomMutate]);
 
   if (!chattingList) return null;
 

@@ -1,4 +1,5 @@
 import { AI_PROFILES_QUERY_KEY } from '@/features/shared/hooks/queries/useGetAiProfiles';
+import { CHATTING_LIST_QUERY_KEY } from '@/features/shared/hooks/queries/useGetChattingList';
 import { type ChangeAiProfileDto } from '@/features/shared/types/dto';
 import { getDay } from '@/features/shared/utils/day';
 import { APIClient } from '@/modules/axios';
@@ -19,7 +20,10 @@ export const useChangeAiProfileMutation = () => {
 
   return useMutation({
     mutationFn: patchAiProfile,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: [AI_PROFILES_QUERY_KEY] }),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: [AI_PROFILES_QUERY_KEY] });
+      await queryClient.invalidateQueries({ queryKey: [CHATTING_LIST_QUERY_KEY] });
+    },
     onError: () => toast('useChangeAiProfileMutation 실패'),
   });
 };
