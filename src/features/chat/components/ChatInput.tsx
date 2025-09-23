@@ -17,7 +17,7 @@ export default function ChatInput() {
   };
 
   return (
-    <div className="sticky bottom-0 bg-white/80 border-t p-4">
+    <div className="sticky bottom-0 border-t border-gray-300 p-4">
       <form className="flex gap-2 items-center" onSubmit={handleChatSubmit}>
         <input
           type="text"

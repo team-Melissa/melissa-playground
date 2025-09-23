@@ -8,6 +8,8 @@ type Props = {
 };
 
 export default function ChatMessage({ chat, isUser }: Props) {
+  const chatBoxStyle = isUser ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-900';
+
   return (
     <div className={cn('flex gap-3 mb-4', isUser ? 'justify-end' : 'justify-start')}>
       {!isUser && (
@@ -17,12 +19,7 @@ export default function ChatMessage({ chat, isUser }: Props) {
       )}
       <div className={cn('flex flex-col', isUser ? 'items-end' : 'items-start')}>
         {!isUser && <p className="text-sm text-gray-600 mb-1">{chat.aiProfileName}</p>}
-        <div
-          className={cn(
-            'max-w-xs lg:max-w-md px-4 py-2 rounded-2xl break-words',
-            isUser ? 'bg-blue-500 text-white rounded-br-md' : 'bg-gray-100 text-gray-900 rounded-bl-md'
-          )}
-        >
+        <div className={cn('max-w-xs lg:max-w-md px-4 py-2 rounded-2xl break-words shadow-sm', chatBoxStyle)}>
           {chat.content}
         </div>
         <p className="text-xs text-gray-500 mt-1">
