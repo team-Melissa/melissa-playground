@@ -33,7 +33,7 @@ export default function ChatContainer() {
   if (!chattingList) return null;
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen">
       <ChatHeader aiProfileImage={chattingList.aiProfileImageS3} aiProfileName={chattingList.aiProfileName} />
       <ChatList chats={chattingList.chats} />
       <ChatInput />

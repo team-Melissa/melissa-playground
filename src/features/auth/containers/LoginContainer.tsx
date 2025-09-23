@@ -13,7 +13,7 @@ export default function LoginContainer() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-200">
+    <div className="min-h-screen flex flex-col justify-center items-center">
       <div className="bg-gray-100 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h1 className="text-xl font-bold text-center text-gray-900 mb-8">Melissa Playground</h1>
         <div className="flex flex-col gap-4">
