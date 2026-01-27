@@ -6,9 +6,20 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { isAxiosError } from 'axios';
 import { toast } from 'sonner';
 
-const sendChat = async (content: string) => {
+type Params = {
+  aiProfileId: number;
+  content: string;
+};
+
+const sendChat = async ({ aiProfileId, content }: Params) => {
   const { year, month, day } = getDay();
-  const { data } = await APIClient.post<SendChatDto>('/api/v2/chats/message-test', { content, year, month, day });
+  const { data } = await APIClient.post<SendChatDto>('/api/v2/chats/message-test', {
+    aiProfileId,
+    content,
+    year,
+    month,
+    day,
+  });
 
   return data.result;
 };
