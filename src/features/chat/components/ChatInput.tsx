@@ -1,9 +1,11 @@
+import { useAiProfileId } from '@/features/chat/hooks/useAiProfileId';
 import { useSendChatMutation } from '@/features/shared/hooks/mutations/useSendChatMutation';
 import { SendHorizontal } from 'lucide-react';
 import { type ChangeEvent, type FormEvent, useState } from 'react';
 
 export default function ChatInput() {
   const [input, setInput] = useState<string>('');
+  const aiProfileId = useAiProfileId();
   const { isPending, mutate: sendChatMutate } = useSendChatMutation();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -13,7 +15,12 @@ export default function ChatInput() {
   const handleChatSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isPending || !input) return;
-    sendChatMutate(input, { onSuccess: () => setInput('') });
+    sendChatMutate(
+      { content: input, aiProfileId: aiProfileId ?? 0 },
+      {
+        onSuccess: () => setInput(''),
+      }
+    );
   };
 
   return (
